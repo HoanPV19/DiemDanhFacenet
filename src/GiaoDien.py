@@ -105,17 +105,24 @@ def create_new_column(selected_class):
                 return
             
             # Tìm ô trống đầu tiên trong dòng tiêu đề
+            empty_col = None
             for col in range(1, sheet.max_column + 1):
                 if sheet.cell(row=1, column=col).value is None:
-                    sheet.cell(row=1, column=col, value=new_column_name)  # Thêm tiêu đề cột
+                    empty_col = col
                     break
+            
+            # Nếu không tìm thấy ô trống, thêm vào cột tiếp theo
+            if empty_col is None:
+                empty_col = sheet.max_column + 1
+            
+            sheet.cell(row=1, column=empty_col, value=new_column_name)  # Thêm tiêu đề cột
             
             workbook.save(excel_file_path)  # Lưu lại file Excel
             
             update_sessions(selected_class)  # Cập nhật lại danh sách buổi
             messagebox.showinfo("Thành công", f"Đã thêm buổi học '{new_column_name}' vào file {selected_class}.xlsx.")
         except Exception as e:
-            messagebox.showerror("Error", f"Không thể tạo buổi học mới: {e}")           
+            messagebox.showerror("Error", f"Không thể tạo buổi học mới: {e}")
 
             
 # Hàm gọi khi người dùng chọn buổi trong Combobox

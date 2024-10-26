@@ -8,3 +8,9 @@ Pillow
 requests
 psutil
 imageio
+tkinter
+subprocess
+os
+pandas
+openpyxl 
+shutil
