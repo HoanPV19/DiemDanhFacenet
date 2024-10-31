@@ -131,7 +131,7 @@ def face_recognition_process(sess, model, class_names, images_placeholder, embed
                             cv2.putText(frame, best_name, (bb[i][0], bb[i][3] + 20), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 255), thickness=1, lineType=2)
 
                         # Hiển thị xác suất
-                        cv2.putText(frame, str(round(best_class_probabilities[0], 3)), (bb[i][0], bb[i][3] + 40), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 255, 0), thickness=1, lineType=2)
+                        # cv2.putText(frame, str(round(best_class_probabilities[0], 3)), (bb[i][0], bb[i][3] + 40), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 255, 0), thickness=1, lineType=2)
 
         except Exception as e:
             print(f"Error: {e}")
